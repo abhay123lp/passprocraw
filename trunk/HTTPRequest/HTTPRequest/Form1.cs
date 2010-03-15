@@ -112,6 +112,7 @@ namespace HTTPRequest
         private void button5_Click(object sender, EventArgs e)
         {
             richTextBox3.Clear();
+
         }
 
         public void button6_Click(object sender, EventArgs e)
