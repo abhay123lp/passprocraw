@@ -88,6 +88,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="vector.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ClassLibrary1\ClassLibrary1.csproj">

@@ -31,23 +31,24 @@ namespace HTTPRequest
             //MessageBox.Show("HTTP Requesting the following URL: " + textBox1.Text);
             try
             {
-                
-                //creating web http request
-                HttpWebRequest request = (HttpWebRequest)
-                    WebRequest.Create("http://" + textBox1.Text);
-                //Executing request and taking response as Stream 
+                textBox1.Text = "ozan 5;hakan 6;kubilay 5";
+               
+                Queue initialvector = parsevector(textBox1.Text);
 
-                HttpWebResponse response = (HttpWebResponse)
-                    request.GetResponse();
-                Stream resStream = response.GetResponseStream();
-                //Creating a StreamReader Object
-                StreamReader a = new StreamReader(resStream);
-                //Reading all stream and convert it to string
-                string txt = a.ReadToEnd();
-                richTextBox1.Text = txt;
+                //http://www.google.com.tr/search?q=kubilay+onur+güngör
+                string querystring = ""; 
+                foreach (object q in initialvector)
+                {
+                    vector b = (vector)q;
+                    querystring += b.text + "+"; 
+
+                }
+
+                string txt = httprequester("http://www.google.com/search?q=" + querystring);
+                //richTextBox1.Text = txt;
 
                 //URL Location 
-                String URLLocation = textBox1.Text;
+                String URLLocation = "http://www.google.com/search?q=" + querystring;
                 //Creating inst object in terms of Parser Class
                 //use MakeLinks method in order to parse the links
                 Parser.Parser inst2 = new Parser.Parser();
@@ -60,6 +61,21 @@ namespace HTTPRequest
                 //Parsing the Content in the related URL
                 Parser.Parser inst = new Parser.Parser();
                 richTextBox2.Text = inst.GetText(txt);
+
+
+
+
+
+                foreach (object q in initialvector)
+                {
+                    vector b = (vector)q;
+
+
+                    richTextBox4.Text += b.text + " --> " + b.weight + "\n"; 
+
+                }
+
+
             }
             catch
             {
@@ -69,6 +85,45 @@ namespace HTTPRequest
             
             
 
+        }
+        //method for whole http request
+        private static string httprequester(string url)
+        {
+            //creating web http request
+            HttpWebRequest request = (HttpWebRequest)
+                WebRequest.Create(url);
+            //Executing request and taking response as Stream 
+
+            HttpWebResponse response = (HttpWebResponse)
+                request.GetResponse();
+            Stream resStream = response.GetResponseStream();
+            //Creating a StreamReader Object
+            StreamReader a = new StreamReader(resStream);
+            //Reading all stream and convert it to string
+            string txt = a.ReadToEnd();
+            return txt;
+        }
+
+        private Queue parsevector(string p)
+        {
+            Queue querybox = new Queue(); 
+            char[] seperator = { ';' };
+
+            string[] initial = p.Split(seperator);
+
+            foreach (string item in initial)
+            {
+                char[] seperator2 = { ' ' };
+                string[] values = item.Split(seperator2);
+                vector a = new vector();
+                a.text = values[0];
+                a.weight = Convert.ToInt32(values[1]);
+
+                querybox.Enqueue(a); 
+            }
+
+
+            return querybox; 
         }
 
         
