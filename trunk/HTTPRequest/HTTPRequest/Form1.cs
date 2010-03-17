@@ -31,7 +31,7 @@ namespace HTTPRequest
             //MessageBox.Show("HTTP Requesting the following URL: " + textBox1.Text);
             try
             {
-                textBox1.Text = "ozan 5;hakan 6;kubilay 5";
+                textBox1.Text = "taner 9;eskil 9;ışık 7";
                
                 Queue initialvector = parsevector(textBox1.Text);
 
@@ -43,7 +43,7 @@ namespace HTTPRequest
                     querystring += b.text + "+"; 
 
                 }
-
+                -----------------------------------------------------------------------------
                 string txt = httprequester("http://www.google.com/search?q=" + querystring);
                 //richTextBox1.Text = txt;
 
@@ -61,10 +61,7 @@ namespace HTTPRequest
                 //Parsing the Content in the related URL
                 Parser.Parser inst = new Parser.Parser();
                 richTextBox2.Text = inst.GetText(txt);
-
-
-
-
+                ------------------------------------------------------------------------------
 
                 foreach (object q in initialvector)
                 {
