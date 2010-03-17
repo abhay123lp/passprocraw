@@ -71,6 +71,7 @@ namespace HTTPRequest
 
         }
 
+        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -119,7 +120,8 @@ namespace HTTPRequest
         {
             richTextBox4.Text = "Sayı :" + frontier.Count;
             string a = (string)frontier.Peek();
-            MessageBox.Show(a);
+            
+            
         }
 
         
