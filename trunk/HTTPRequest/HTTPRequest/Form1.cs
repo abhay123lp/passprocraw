@@ -93,7 +93,6 @@ namespace HTTPRequest
             HttpWebRequest request = (HttpWebRequest)
                 WebRequest.Create(url);
             //Executing request and taking response as Stream 
-
             HttpWebResponse response = (HttpWebResponse)
                 request.GetResponse();
             Stream resStream = response.GetResponseStream();
