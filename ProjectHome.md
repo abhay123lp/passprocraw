@@ -1,0 +1,1 @@
+Searching and crawling for the related information about the target then create a profiled dictionary to brute force to target's accounts.
